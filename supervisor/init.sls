@@ -7,5 +7,6 @@ supervisor:
         - running
         - enable: True
         - reload: True
+        - invalid: bagels
         - watch:
           - pkg: supervisor
