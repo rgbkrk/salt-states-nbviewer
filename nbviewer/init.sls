@@ -21,7 +21,7 @@ nbviewer-git:
     - force: true
     - force_checkout: true
     - require:
-      - pkg: git
+      - nbviewer: packages
 
 logdeploy:
   cmd.run:
@@ -43,6 +43,8 @@ logdeploy:
         - mode: 644
         - context:
             environment: '{{ salt['pillar.get']('supervisor:environment', '')}}'
+        - require:
+          - supervisor: supervisor
 
 # Reread any configuration file changes
 reread:
@@ -50,9 +52,13 @@ reread:
         - name: supervisorctl reread
         - watch:
             - file: /etc/supervisor/conf.d/nbviewer.conf
+        - require:
+          - supervisor: supervisor
 
 # Restart the process in case of code or environment variable updates
 restart:
     cmd.run:
         - name: supervisorctl restart nbviewer
+        - require:
+          - supervisor: supervisor
 
