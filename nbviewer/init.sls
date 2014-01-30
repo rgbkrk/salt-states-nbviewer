@@ -32,6 +32,8 @@ logdeploy:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
+        - require:
+          - python: virtualenv
 
 # Manage the service with nbviewer
 /etc/supervisor/conf.d/nbviewer.conf:

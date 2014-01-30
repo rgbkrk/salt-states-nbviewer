@@ -18,10 +18,12 @@ pippin:
   cmd.run:
     - name: curl --show-error --retry 5 https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7
     - reload_modules: true
+    - require:
+      - setuptools
 
 virtualenv:
   pip.installed:
     - reload_modules: true
   require:
-    - cmd: python-pip
+    - pippin
 
