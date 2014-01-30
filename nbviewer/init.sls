@@ -4,7 +4,7 @@ packages:
     - installed
     - names:
       - git
-      - libzmq-dev
+      - libzmq3-dev
       - sqlite3
       - libsqlite3-dev
       - pandoc
