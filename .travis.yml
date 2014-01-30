@@ -35,4 +35,6 @@ script:
   - wget 127.0.0.1:8080 -O test.html
   - cat test.html
   - wget 127.0.0.1:8080/gist/darribas/4121857 -O test2.html
-  - cat test2.html | grep Analyze
+  - cat test2.html
+  - cat /var/log/nbviewer
+  - cat test2.html | grep analyze
