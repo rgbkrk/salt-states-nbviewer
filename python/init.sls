@@ -12,6 +12,8 @@ base-deps:
 setuptools:
   cmd.run:
     - name: wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python2.7
+    - require:
+      - python: base-deps
 
 # Install the most recent version of pip, manually
 pippin:
@@ -19,11 +21,11 @@ pippin:
     - name: curl --show-error --retry 5 https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7
     - reload_modules: true
     - require:
-      - setuptools
+      - python: setuptools
 
 virtualenv:
   pip.installed:
     - reload_modules: true
   require:
-    - pippin
+    - python: pippin
 
