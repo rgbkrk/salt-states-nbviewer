@@ -31,5 +31,8 @@ script:
   # Next step is doing some verification of the run
   - sudo salt-call state.highstate --local
   - sudo salt-call state.highstate --local
-  - sudo salt-call state.highstate --local --retcode-passthrough
-  - wget 127.0.0.1:8888
+  - sudo salt-call state.highstate --local
+  - wget 127.0.0.1:8080 -O test.html
+  - cat test.html
+  - wget 127.0.0.1:8080/gist/darribas/4121857 -O test2.html
+  - cat test2.html | grep Analyze
