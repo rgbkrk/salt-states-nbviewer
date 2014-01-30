@@ -26,10 +26,13 @@ install:
 
   # For additional debugging, see what's in grains on a travis box
   - sudo salt-call grains.items --local
+  - sudo salt-call cmd.run 'apt-cache search zeromq'
+  - sudo salt-call cmd.run 'apt-cache search memcache'
+  - sudo salt-call cmd.run 'apt-cache search supervisor'
 
 script:
   - sudo salt-call state.show_highstate --local --retcode-passthrough
   - sudo salt-call state.show_lowstate --local --retcode-passthrough
   # Next step is doing some verification of the run
-  #- sudo salt-call state.highstate --local
+  - sudo salt-call state.highstate --local
   #- wget 127.0.0.1:8888
