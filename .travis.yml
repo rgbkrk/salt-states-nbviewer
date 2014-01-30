@@ -31,5 +31,5 @@ script:
   - sudo salt-call state.show_highstate --local --retcode-passthrough
   - sudo salt-call state.show_lowstate --local --retcode-passthrough
   # Next step is doing some verification of the run
-  #- sudo salt-call state.highstate --local
+  - sudo salt-call state.highstate --local --retcode-passthrough
   #- wget 127.0.0.1:8888
